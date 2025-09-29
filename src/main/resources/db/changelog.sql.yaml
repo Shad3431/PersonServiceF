@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Liquibase
+      changes:
+        - createTable:
+            tableName: test_table
+            columns:
+              - column:
+                  name: test_column
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: data-1
+      author: Shad
+      changes:
+        - insert:
+            tableName: person
+            columns:
+              - column: { name: id, valueNumeric: 1012 }
+              - column: { name: name, value: "Alice" }
+              - column: { name: birth_date, valueDate: "1990-05-12" }
+              - column: { name: building, valueNumeric: 1 }
+              - column: { name: city, value: "Giessen" }
+              - column: { name: street, value: "LiebigStr" }
+  - changeSet:
+      id: data-2
+      author: Shad
+      changes:
+        - insert:
+            tableName: person
+            columns:
+              - column: { name: id, valueNumeric: 999 }
+              - column: { name: name, value: "Mark" }
+              - column: { name: birth_date, valueDate: "1990-05-12" }
+              - column: { name: building, valueNumeric: 2 }
+              - column: { name: city, value: "Giessen" }
+              - column: { name: street, value: "LiebigStr" }
