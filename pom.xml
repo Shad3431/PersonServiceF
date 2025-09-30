@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cohort_65.java</groupId>
-    <artifactId>personService</artifactId>
+    <artifactId>PersonService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>personService</name>
-    <description>personService</description>
+    <name>PersonService</name>
+    <description>PersonService</description>
     <url/>
     <licenses>
         <license/>
@@ -28,9 +28,13 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.33.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -39,7 +43,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.4</version>
+        </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -49,11 +57,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.2.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -76,19 +79,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.33.0</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/db/changelog.sql.yaml</changeLogFile>
-                    <url>jdbc:postgresql://person-db-cohort65new.b.aivencloud.com:23831/defaultdb?ssl=require</url>
-                    <username>avnadmin</username>
-                    <!--suppress UnresolvedMavenProperty -->
-                    <password>${env.PASSWORD}</password>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
